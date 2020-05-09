@@ -2,7 +2,6 @@ require 'dotenv'
 require_relative '../comakery_api_signature.rb'
 require 'httparty'
 require 'pp'
-require 'active_support/all'
 
 Dotenv.load
 PRIVATE_KEY = ENV['PRIVATE_KEY']
