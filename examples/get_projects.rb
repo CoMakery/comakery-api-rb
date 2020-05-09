@@ -1,39 +1,21 @@
-require 'dotenv'
+require_relative '../helper.rb'
 require_relative '../comakery_api_signature.rb'
-require 'httparty'
-require 'pp'
 
-Dotenv.load
 PRIVATE_KEY = ENV['PRIVATE_KEY']
 API_KEY = ENV['API_KEY']
 API_URL = ENV['API_URL']
 
 api_endpoint = API_URL + '/api/v1/projects'
 
-signed_query = Comakery::APISignature.new('body' => {
-    'data' => "",
-    'url' => api_endpoint,
-    'method' => 'GET'
-}).sign(PRIVATE_KEY)
-
-
-
-response = HTTParty.get(
-    api_endpoint,
-    query: signed_query,
-    headers: {
-        'Api-Key': API_KEY
+result = Comakery::APISignature.signed_request(
+    API_KEY,
+    PRIVATE_KEY, {
+        'body' => {
+            'data' => "",
+            'url' => api_endpoint,
+            'method' => 'GET'
+        }
     }
 )
 
-puts signed_query
-puts "\n\nAPI ENDPOINT"
-pp api_endpoint
-puts "\n\nSIGNED QUERY PARAMS:"
-pp signed_query
-puts "\n\nAPI REQUEST URI"
-pp response.request.last_uri.to_s
-puts "\n\n"
-puts "\n\nAPI RESPONSE"
-pp response.to_s
-puts "\n\n"
+print_signed_request_result(result)
