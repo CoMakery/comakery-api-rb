@@ -25,7 +25,7 @@ signed_query = Comakery::APISignature.new({"body" => {
      "method"=>"POST"}
 }).sign(PRIVATE_KEY)
 
-response = HTTParty.get(
+response = HTTParty.post(
     api_endpoint,
     query: signed_query,
     headers: {
