@@ -2,6 +2,8 @@
 
 This an API wrapper for making requests to the CoMakery API. It implements signing and verifying CoMakery API requests with Ed25519 digital signature public & private keys.
 
+**API Documentation is [Here](https://www.comakery.com/doc/api/index.html)**
+
 ## Installation
 
 To get started:
@@ -21,6 +23,8 @@ API_URL=https://www.comakery.com or your whitelable URL
 ```
 
 ## Making requests
+
+Check out the examples in the [examples directory](./examples)
 
 Run the examples in the example folder against a test environment like this:
 ```
@@ -49,6 +53,8 @@ Comakery::APISignature.signed_request(
     }
 )
 ```
+
+**Full API Documentation is [Here](https://www.comakery.com/doc/api/index.html)**
 
 ## Using the API
 
