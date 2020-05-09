@@ -1,5 +1,6 @@
 require 'dotenv'
 require 'pp'
+require 'json'
 Dotenv.load
 
 def print_signed_request_result(result)
@@ -11,6 +12,6 @@ def print_signed_request_result(result)
   pp result[:response].request.last_uri.to_s
   puts "\n\n"
   puts "\n\nAPI RESPONSE"
-  pp result[:response].to_s
+  pp JSON.parse(result[:response].to_s)
   puts "\n\n"
 end
