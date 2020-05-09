@@ -2,6 +2,7 @@ require 'ed25519'
 require 'securerandom'
 require 'base64'
 require 'json/canonicalization'
+require 'httparty'
 
 module Comakery
   # Raised during unsuccessfull signature verification
@@ -29,6 +30,20 @@ module Comakery
       @http_url = http_url
       @http_method = http_method
       @is_nonce_unique = is_nonce_unique
+    end
+
+    # A convenience method for signing and sending requests
+    def self.signed_request(api_key, private_key, api_endpoint, request_payload)
+      signed_query = Comakery::APISignature.new(request_payload).sign(private_key)
+
+      method = request_payload["body"]["method"].downcase
+      response = HTTParty.send(method, api_endpoint,
+                               query: signed_query,
+                               headers: {
+                                   'Api-Key': api_key
+                               })
+
+      return {signed_query: signed_query, response: response}
     end
 
     # Signs the request with given private key, appending nonce, timestamp and proof
