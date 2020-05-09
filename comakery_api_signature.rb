@@ -33,10 +33,11 @@ module Comakery
     end
 
     # A convenience method for signing and sending requests
-    def self.signed_request(api_key, private_key, api_endpoint, request_payload)
+    def self.signed_request(api_key, private_key, request_payload)
       signed_query = Comakery::APISignature.new(request_payload).sign(private_key)
 
       method = request_payload["body"]["method"].downcase
+      api_endpoint = request_payload["body"]["url"]
       response = HTTParty.send(method, api_endpoint,
                                query: signed_query,
                                headers: {
