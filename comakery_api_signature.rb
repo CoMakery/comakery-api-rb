@@ -1,6 +1,7 @@
 require 'ed25519'
 require 'securerandom'
 require 'base64'
+require 'json/canonicalization'
 
 module Comakery
   # Raised during unsuccessfull signature verification

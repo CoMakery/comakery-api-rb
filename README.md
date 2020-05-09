@@ -1,5 +1,24 @@
 Implements signing and verifying Comkakery API requests with Ed25519 digital signature algorithm
 
+## Installation
+
+To get started:
+
+0. Clone this repo
+1. run `bundle install`
+1. Get an API key from CoMakery
+1. Generate a public/private keypair in ed25519 format for signing your API requests.
+1. Give the public key of your ed25519 keypair to CoMakery. Keep the private key secure.
+1. For test environments here you can store your api key and private key in your .env file at the root of the project
+
+Create a .env file with these variables
+```
+API_KEY=get this from CoMakery
+PRIVATE_KEY=ed25519 private key
+
+```
+
+## Comakery::APISignature Library
 
 Format of the request (JSON):
 ```json
