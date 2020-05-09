@@ -16,7 +16,7 @@ To get started:
 1. For test environments here you can store your api key and private key in your .env file at the root of the project
 
 Copy the `.env.example` file to `.env` and enter these variables:
-```
+```bash
 API_KEY=get this from CoMakery
 PRIVATE_KEY=ed25519 private key
 API_URL=https://www.comakery.com or your whitelable URL
@@ -27,12 +27,12 @@ API_URL=https://www.comakery.com or your whitelable URL
 Check out the examples in the [examples directory](./examples)
 
 Run the examples in the example folder against a test environment like this:
-```
+```bash
 ruby examples/get_projects.rb
 ```
 
 Or configure your own signed API requests like this:
-```
+```ruby
 Comakery::APISignature.signed_request(
     API_KEY,
     PRIVATE_KEY, {
@@ -56,11 +56,10 @@ Comakery::APISignature.signed_request(
 
 **Full API Documentation is [Here](https://www.comakery.com/doc/api/index.html)**
 
-## Using the API
-
-More complete documentation is here.
 
 ## Comakery::APISignature Library
+
+If you want to interact with the raw request signatures here are some more details.
 
 Format of the request (JSON):
 ```json
@@ -96,6 +95,7 @@ signed_request = Comakery::APISignature.new(request).sign(private_key)
 
 
 ### Example – Verifying request:
+
 ```ruby
 public_key = 'O7zTH4xHnD1jRKheBTrpNN24Fg1ddL8DHKi/zgVCVpA='
 
@@ -124,9 +124,3 @@ rescue Comakery::APISignatureError => e
   e.message
 end
 ```
-
-
-Example – Usage in CLI:
-
-`$ irb -r api_signature.rb -e 'puts Comakery::APISignature.new(File.read("request.json")).sign(File.read("key"))'`
-`$ irb -r api_signature.rb -e 'puts Comakery::APISignature.new(File.read("request.json")).verify(File.read("key.pub"))'`
