@@ -1,4 +1,4 @@
-# CoMakery API Ruby 
+# CoMakery API Ruby Wrapper
 
 This an API wrapper for making requests to the CoMakery API. It implements signing and verifying CoMakery API requests with Ed25519 digital signature public & private keys.
 
