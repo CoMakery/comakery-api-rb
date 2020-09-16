@@ -20,7 +20,7 @@ result = Comakery::APISignature.signed_request(
                       "nickname" => "hunter-36546fef2bc6c93536aaf0a7e3c374d645a00d59",
                       "date_of_birth" => "1990/01/01",
                       "country" => "United States of America",
-                      "ethereum_wallet" => "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B"}},
+                      }},
             "url" => API_ENDPOINT,
             "method" => "POST"
         }

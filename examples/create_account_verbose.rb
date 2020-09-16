@@ -10,20 +10,21 @@ API_URL = ENV['API_URL']
 
 api_endpoint = API_URL + '/api/v1/accounts'
 
-signed_query = Comakery::APISignature.new({"body" => {
-    "data" =>
-        {"account" =>
-             {"managed_account_id" => "ae0344e2-fff8-466b-8de7-5941ec7115c2",
-              "email" => "me+bc6b1da493d156f06d2fb85a044ba01146796f52@example.com",
-              "first_name" => "Eva",
-              "last_name" => "Smith",
-              "nickname" => "hunter-36546fef2bc6c93536aaf0a7e3c374d645a00d59",
-              "date_of_birth" => "1990/01/01",
-              "country" => "United States of America",
-              "ethereum_wallet" => "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B"}},
-    "url" => api_endpoint,
-    "method" => "POST"}
-                                          }).sign(PRIVATE_KEY)
+signed_query = Comakery::APISignature.new(
+    {"body" => {
+        "data" =>
+            {"account" =>
+                 {"managed_account_id" => "ae0344e2-fff8-466b-8de7-5941ec7115c2",
+                  "email" => "me+bc6b1da493d156f06d2fb85a044ba01146796f52@example.com",
+                  "first_name" => "Eva",
+                  "last_name" => "Smith",
+                  "nickname" => "hunter-36546fef2bc6c93536aaf0a7e3c374d645a00d59",
+                  "date_of_birth" => "1990/01/01",
+                  "country" => "United States of America",
+                 }},
+        "url" => api_endpoint,
+        "method" => "POST"}
+    }).sign(PRIVATE_KEY)
 
 response = HTTParty.post(
     api_endpoint,
