@@ -6,6 +6,7 @@ API_KEY = ENV['API_KEY']
 API_URL = ENV['API_URL']
 
 API_ENDPOINT = API_URL + '/api/v1/accounts'
+UNIQUE_MANAGED_ACCOUNT_ID = rand(36**31..36**32-1).to_i.to_s(36)
 
 result = Comakery::APISignature.signed_request(
     API_KEY,
@@ -13,11 +14,11 @@ result = Comakery::APISignature.signed_request(
         "body" => {
             "data" =>
                 {"account" =>
-                     {"managed_account_id" => "ae0344e2-fff8-466b-8de7-5941ec7115c2",
-                      "email" => "me+bc6b1da493d156f06d2fb85a044ba01146796f52@example.com",
+                     {"managed_account_id" => UNIQUE_MANAGED_ACCOUNT_ID,
+                      "email" => "me+#{UNIQUE_MANAGED_ACCOUNT_ID}@example.com",
                       "first_name" => "Eva",
                       "last_name" => "Smith",
-                      "nickname" => "hunter-36546fef2bc6c93536aaf0a7e3c374d645a00d59",
+                      "nickname" => "hunter-#{UNIQUE_MANAGED_ACCOUNT_ID}",
                       "date_of_birth" => "1990/01/01",
                       "country" => "United States of America",
                       }},
