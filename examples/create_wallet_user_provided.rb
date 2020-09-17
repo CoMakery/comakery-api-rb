@@ -17,7 +17,8 @@ result = Comakery::APISignature.signed_request(
     {"body" =>
          {"data" =>
               {"type" => "user_provided",
-               "blockchain" => "algorand_testnet",
+               "blockchain" => "algorand_test",
+               "address" => "5K6J3Z54656IR7YY65WNJT54UW6RBZZYL5LWQUTG4RWOTRTRBE2MR2AODQ",
                "check" => ["NOTE", "USDC"] # verifies that the wallet is configured to receive these assets
               }
          },

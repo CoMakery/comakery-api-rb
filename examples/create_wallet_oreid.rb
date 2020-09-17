@@ -17,7 +17,7 @@ result = Comakery::APISignature.signed_request(
     {"body" =>
          {"data" =>
               {"type" => "oreid",
-               "blockchain" => "algorand_testnet",
+               "blockchain" => "algorand_test",
                "provision" => ["republic_note"]
               }
          },
