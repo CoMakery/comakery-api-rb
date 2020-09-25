@@ -2,7 +2,7 @@
 
 This an API wrapper for making requests to the CoMakery API. It implements signing and verifying CoMakery API requests with Ed25519 digital signature public & private keys.
 
-**API Documentation is [Here](https://www.comakery.com/doc/api/index.html)**
+**API Documentation is [Here](https://www.comakery.com/doc/api/v1/index.html)**
 
 ## Installation
 
